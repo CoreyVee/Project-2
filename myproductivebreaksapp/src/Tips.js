@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Favorites = () => {
+const Tips = () => {
     
     return (
         <div>
-            <h2>Your Favorite Activities go Here:</h2>
+            <h2>Tips on how to get the most out of your breaks go Here:</h2>
         </div>
 
     )
 
 }
-export default Favorites;
+export default Tips;
