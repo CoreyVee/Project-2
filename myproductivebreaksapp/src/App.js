@@ -1,4 +1,5 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Header from './'
 import './App.css';
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
         >
           Learn React
         </a>
-      </header>
     </div>
   );
 }

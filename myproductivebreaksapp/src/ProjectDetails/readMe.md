@@ -20,7 +20,22 @@ MVP features are written in black, non-MVP features are written in blue. To the 
 
 ![Wireframe](./AppWireframe.png)
 
+![MobileWireframe](./MobileWireframe.png)
 ## Time/Priority Matrix
+
+## Components 
+
+| Components | Description |
+|---|---|
+| App | Set up app and components with React Router |
+| Header | Renders header and nav |
+| Footer | Footer renders along with nav |
+| Main.js | Connects and renders all components |
+| Form | Makes fetch request to Bored API and returns activity |
+| Favorites | Toggles favorited activities and appends them to list |
+| Related Activities | Suggests other activities based of your favorited acitivities |
+| Tips Page | Provides tips for making the most of your breaks so you can stay productive|
+| Art | Renders visual component for activities |
 
 Rough estimate on features and their difficulty, with estimated time projections.
 
@@ -59,7 +74,8 @@ Requirements
 ## Additional Libraries
 Supporting libraries and thier role in the project
 |Library/Resources|Role|
-| TBD | TBD |
+|---|---|
+| API | [Bored API](https://www.boredapi.com/) |
 | TBD | TBD |
 | TBD | TBD |
 | TBD | TBD |
