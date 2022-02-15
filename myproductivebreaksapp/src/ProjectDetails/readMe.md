@@ -10,6 +10,23 @@
 | Day 4| Finalize favorites list/ debug API call errors/ Work on non-mvp features| Incomplete |
 | Day 5 | Revise for errors in morning / Celebrate at Deployment party | Incomplete |
 
+## API
+
+[Bored API](https://www.boredapi.com/)
+
+ex: 
+```
+{
+  "activity": "Practice coding in your favorite lanaguage",
+  "type": "recreational",
+  "participants": 1,
+  "price": 0,
+  "link": "",
+  "key": "7096020",
+  "accessibility": 0.1
+}
+```
+
 ## Project Description
 
 My Productive Breaks App is designed to fetch random activity randomly or by categories of the users choosing, that provide a mentally stimulating break. Users will be able to add activities to their favorites list by toggling a favorites checkbox. Favorited activities will be saved to a list for the user so that they can return and learn more in the future. Non-mvp features include art to add a visual component to the activities, as well as a 15 minute timer so that users can enjoy a short productive break.
