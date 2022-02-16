@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import {Route, Link, Routes} from 'react-router-dom';
 import Header from './Header'
 import Footer from './Footer'
