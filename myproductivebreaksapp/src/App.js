@@ -10,13 +10,29 @@ import Tips from './Tips'
 import './App.css';
 
 function App() {
+  const [favorite, setFavorite] = useState([]) 
+
+  const handleAddFavorite = (object, type, participants) => {
+    const favorites = [...favoritesList];
+    team.push({object, type, participants});
+    setFavorite(favorites)
+  }
+
+  const handleRemoveFavorite = (object) => {
+    const favorites = [...favoritesList];
+    const newFavorites = favorites.filter((activity) =>
+    activity !== object);
+    setFavorite(newFavorites));
+  }
+
   return (
     <div className="App">
       <Header />
       <main>
       <Routes>
-        <Route path='/' element= {<Home />} />
-        <Route path='/Favorites' element= {<Favorites />} />
+        <Route path='/' element= {<Home handleAddFavorite={handleAddFavorite}/>} />
+        <Route path='/Favorites' element= {<Favorites favorite={favorite}
+                                                      handleRemoveFavorite={handleRemoveFavorite}/>} />
         <Route path='/ProductivityTips' element= {<Tips />} />
       </Routes>
       </main>

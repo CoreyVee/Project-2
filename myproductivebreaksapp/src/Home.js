@@ -6,9 +6,13 @@ import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
+import { AiOutlineStar } from 'react-icons/ai';
 
-const Home = () => {
+
+const Home = ({handleAddFavorite}) => {
     const [bored, setBored] = useState({});
     const [type, setType] = useState(null);
     const [hidden, setHidden] = useState('hidden');
@@ -50,7 +54,12 @@ const dropDownButton = typeArr.map((category, index) =>
         .then((data) => setBored(data))
         .catch(() => console.log('No random activities today :('))
     }
-
+    const getAnotherActivity = () => {
+        fetch(url)
+        .then((response) => response.json())
+        .then((data) => setBored(data))
+        .catch(() => console.log('No random activities today :('))
+    }
     const toggleHidden = () => {
         setHidden('block')
     }
@@ -78,21 +87,35 @@ return (
         <h4 className='subTitle'>Kick back, relax, and reset with a fun activity</h4>
         <p>Productive Breaks is a fun app that uses the Bored API to generate random activities so you can have some fun and get your mind off of work. Save your favorites so you can come back and explore them later, and checkout Tips to find out how you can make the most out of your breaks.</p>
         <Button onClick={() => {getBored(); toggleHidden()}} variant="primary">Get Random Activity</Button>
+<Container fluid='sm'>
         <Card className="text-center" className={hidden}>
-  <Card.Header as='h6' className='text-center'>Type: {bored.type}</Card.Header>
+    
+  <Card.Header as='h6' className='text-center'>Favorite <AiOutlineStar 
+  onClick={(()=> handleAddFavorite())}/></Card.Header>
+  <Container>
+      <Row className='justify-content-space-evenly'>
+        <Col>Participants: {bored.participants}</Col>
+        <Col>Type: {bored.type}</Col>
+      </Row>
   <Card.Body className='text-center'>
-    <Card.Title as='h5' className='text-center'> {bored.activity}</Card.Title>
+    
     <Card.Text>
-    <span class="fa-solid fa-user"></span>
-
+    <Card.Text>{bored.activity}</Card.Text>
     </Card.Text>
-    <DropdownButton as={ButtonGroup} title="Get Activity by Type" id="bg-vertical-dropdown-1">
+    <Row>
+    <Col><DropdownButton as={ButtonGroup} title="Set Activity by Type" id="bg-vertical-dropdown-1">
                 {dropDownButton}
-                </DropdownButton>
-                
+                </DropdownButton></Col>
+    <Col> <Button className="d-grid gap-2" variant="primary" size="md"
+    onClick={(()=> getAnotherActivity())}>
+      Get another
+    </Button>{' '}</Col>
+    </Row>
   </Card.Body >
-  <Card.Footer as= 'h6' className='text-center'>Participants: {bored.participants}</Card.Footer>
+  </Container>
+  <Card.Footer as= 'h6' className='text-center'></Card.Footer>
 </Card>
+</Container>
         </div>
     )
 

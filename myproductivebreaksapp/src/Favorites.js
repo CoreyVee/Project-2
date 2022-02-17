@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Favorites = () => {
+const Favorites = ({favorite, handleRemoveFavorite}) => {
     
     return (
         <div>
