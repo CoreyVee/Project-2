@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import Favorites from "./Favorites";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
@@ -87,11 +88,12 @@ return (
         <h4 className='subTitle'>Kick back, relax, and reset with a fun activity</h4>
         <p>Productive Breaks is a fun app that uses the Bored API to generate random activities so you can have some fun and get your mind off of work. Save your favorites so you can come back and explore them later, and checkout Tips to find out how you can make the most out of your breaks.</p>
         <Button onClick={() => {getBored(); toggleHidden()}} variant="primary">Get Random Activity</Button>
-<Container fluid='sm'>
-        <Card className="text-center" className={hidden}>
+<Container className={hidden} fluid='sm' id='activityCard'>
+        <Card className="text-center" >
     
-  <Card.Header as='h6' className='text-center'>Favorite <AiOutlineStar 
-  onClick={(()=> handleAddFavorite())}/></Card.Header>
+  <Card.Header as='h6' className='text-center'>Favorite <AiOutlineStar />
+  <Button onClick={() => handleAddFavorite()} variant="primary">Favorite</Button>
+  </Card.Header>
   <Container>
       <Row className='justify-content-space-evenly'>
         <Col>Participants: {bored.participants}</Col>
@@ -116,8 +118,8 @@ return (
   <Card.Footer as= 'h6' className='text-center'></Card.Footer>
 </Card>
 </Container>
+<hr></hr>
         </div>
     )
-
 }
 export default Home;

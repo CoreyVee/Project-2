@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import {Route, Link, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import Header from './Header'
 import Footer from './Footer'
 import Home from './Home'
@@ -13,16 +13,16 @@ function App() {
   const [favorite, setFavorite] = useState([]) 
 
   const handleAddFavorite = (object, type, participants) => {
-    const favorites = [...favoritesList];
-    team.push({object, type, participants});
+    const favorites = [...favorite];
+    favorites.push({object, type, participants});
     setFavorite(favorites)
   }
 
   const handleRemoveFavorite = (object) => {
-    const favorites = [...favoritesList];
+    const favorites = [...favorite];
     const newFavorites = favorites.filter((activity) =>
     activity !== object);
-    setFavorite(newFavorites));
+    setFavorite(newFavorites);
   }
 
   return (
