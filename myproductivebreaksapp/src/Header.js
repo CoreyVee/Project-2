@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 const Header = () => {
     return (
 
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" sticky='top'>
           <Container>
             <Navbar.Brand href="#home">
               <img
@@ -20,17 +20,15 @@ const Header = () => {
             </Navbar.Brand>
           </Container>
           <Nav
-  activeKey="/home"
-  onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
->
-  <Nav.Item>
+  defaultActiveKey="/" as='ul'>
+  <Nav.Item as='li'>
     <Nav.Link href="/">Home</Nav.Link>
   </Nav.Item>
-  <Nav.Item>
-    <Nav.Link eventKey="/Favorites">Favorites</Nav.Link>
+  <Nav.Item as='li'>
+    <Nav.Link href="/Favorites">Favorites</Nav.Link>
   </Nav.Item>
-  <Nav.Item>
-    <Nav.Link eventKey="/ProductivityTips">Tips</Nav.Link>
+  <Nav.Item as='li'>
+    <Nav.Link href="/ProductivityTips">Tips</Nav.Link>
   </Nav.Item>
 </Nav>
         </Navbar>
