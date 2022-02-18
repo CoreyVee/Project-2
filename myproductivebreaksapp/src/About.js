@@ -8,7 +8,7 @@ const Tips = () => {
         <div className='aboutPage'>
         <div className='aboutParagraph'>
             <h2>About</h2>
-            <p>Bored API was designed by Drew Thoennes to help you find things to do when you're bored. This app was designed to make it more user friendly to interface with</p>
+            <p>Bored API was designed by Drew Thoennes to help you find things to do when you're bored. This app was designed to make it more user friendly to interface with. Feel free to use the form below to send any feedback on suggestions or issues while using the app.</p>
         <h1>Get in Touch</h1>
         </div>
 <Container>
