@@ -12,13 +12,12 @@ import { AiOutlineStar } from "react-icons/ai";
 
 const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   const [bored, setBored] = useState([]);
-  const [type, setType] = useState('/');
+  const [type, setType] = useState("/");
   const [hidden, setHidden] = useState("hidden");
   const [favoriteHidden, setFavoriteHidden] = useState("hidden");
 
   const boredArray = [];
   boredArray.push(bored);
-  console.log(boredArray);
 
   const url = `http://www.boredapi.com/api/activity${type}`;
   const typeArr = [
@@ -39,8 +38,8 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       await fetch(url)
         .then((response) => response.json())
         .then((data) => setBored(data))
-        .catch(() => console.log("No random activities today :("));
-    };
+        .catch (() => console.error("You made a mistake")
+        )};
     getBoredType();
   }, [type]);
 
@@ -62,14 +61,14 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setBored(data))
-      .catch(() => console.log("No random activities today :("));
-  };
+      .catch (() => console.error("You made a mistake")
+      )};
   const getAnotherActivity = () => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setBored(data))
-      .catch(() => console.log("No random activities today :("));
-  };
+      .catch (() => console.error("You made a mistake")
+      )};
   const toggleHidden = () => {
     setHidden("block");
   };
@@ -78,41 +77,49 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   };
   const aCard = boredArray.map((activity, index) => {
     return (
-      <Container key={index} id="activityCard" >
+      <Container key={index} id="activityCard">
         <Card className={hidden}>
           <Card.Header className="text-center">
             Add to List{" "}
             <AiOutlineStar
-              onClick={() =>
-                {handleAddFavorite(bored.activity, activity.type, activity.participants);
-                    toggleFavoriteHidden()}
-              }
+              onClick={() => {
+                handleAddFavorite(
+                  bored.activity,
+                  activity.type,
+                  activity.participants
+                );
+                toggleFavoriteHidden();
+              }}
             />
           </Card.Header>
           <Container>
-              <Card.Title className='text-center'>{activity.activity}</Card.Title>
+            <Card.Title className="text-center">{activity.activity}</Card.Title>
             <Card.Body className="text-center">
               <Card.Text> Type: {activity.type}</Card.Text>
               <Card.Text> Participants: {activity.participants}</Card.Text>
               <ButtonGroup>
-                    <DropdownButton
-                    as={ButtonGroup}
-                    title="Set Activity Type"
-                    id="md-vertical-dropdown-1"
+                <DropdownButton
+                  as={ButtonGroup}
+                  title="Set Activity Type"
+                  id="md-vertical-dropdown-1"
+                >
+                  {dropDownButton}
+                  <Dropdown.Item
+                    href="https://www.youtube.com/watch?v=08i9kvCJvJ0"
+                    target="_blank"
                   >
-                    {dropDownButton}
-                  <Dropdown.Item href="https://www.youtube.com/watch?v=08i9kvCJvJ0" target="_blank">Build API App</Dropdown.Item>
-                  </DropdownButton>
-                  {" "}
-                  <Button
-                    className="d-grid gap-2"
-                    variant="primary"
-                    size="md"
-                    onClick={() => getAnotherActivity()}
-                  >
-                    Get another
-                  </Button>{" "}
-                  </ButtonGroup>
+                    Build API App
+                  </Dropdown.Item>
+                </DropdownButton>{" "}
+                <Button
+                  className="d-grid gap-2"
+                  variant="primary"
+                  size="md"
+                  onClick={() => getAnotherActivity()}
+                >
+                  Get another
+                </Button>{" "}
+              </ButtonGroup>
             </Card.Body>
           </Container>
           <Card.Footer className="text-center"></Card.Footer>
@@ -120,7 +127,7 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       </Container>
     );
   });
-
+  
   return (
     <div>
       <h1 className="title">Welcome to Bored App!</h1>
@@ -130,8 +137,8 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       <p>
         Not sure what to choose? No problem. Get a random activity by clicking
         on the button below. If you want to get a little more specific, try
-        selecting activities by type. You can search more activities of the
-        same type with the Get another button.
+        selecting activities by type. You can search more activities of the same
+        type with the Get another button.
       </p>
       <Button
         onClick={() => {
@@ -145,11 +152,13 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       <hr></hr>
       {aCard}
       <hr></hr>
-      <Favorites favorite={favorite}
-      handleRemoveFavorite={handleRemoveFavorite}
-      favoriteHidden={favoriteHidden}
-       />
+      <Favorites
+        favorite={favorite}
+        handleRemoveFavorite={handleRemoveFavorite}
+        favoriteHidden={favoriteHidden}
+      />
     </div>
   );
+
 };
 export default Home;
