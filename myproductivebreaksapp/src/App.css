@@ -15,3 +15,9 @@ im
 .activityCard {
     margin-top: 25px;
 }
+hr {
+    padding: 0px;
+}
+.signature {
+    color: white;
+}

@@ -5,8 +5,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
 
 ReactDOM.render(
   <Router>
