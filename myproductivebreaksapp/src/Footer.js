@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 
 const Footer = () => {
   return (
-    <Navbar bg="dark" variant="dark" fixed="bottom">
+    <Navbar id='footer' bg="dark" variant="dark" fixed="bottom">
       <Container>
         <h4 className="signature">Designed by CoreyV</h4>
       </Container>

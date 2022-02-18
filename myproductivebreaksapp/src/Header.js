@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark" sticky="top">
+    <Navbar id='header' bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="#home">
           <img
@@ -22,7 +22,7 @@ const Header = () => {
           <Nav.Link href="/">Home</Nav.Link>
         </Nav.Item>
         <Nav.Item as="li">
-          <Nav.Link href="/ProductivityTips">About</Nav.Link>
+          <Nav.Link href="/About">About</Nav.Link>
         </Nav.Item>
       </Nav>
     </Navbar>

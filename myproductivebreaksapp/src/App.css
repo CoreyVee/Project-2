@@ -4,7 +4,6 @@ lightgreen : #e1dc6b;
 brown: #bb8918;
 purple: #523637;
 pink: #f2b9cc; */
-im
 
 .hidden {
     display: none;
@@ -20,4 +19,7 @@ hr {
 }
 .signature {
     color: white;
+}
+#header{
+    padding: 25px;
 }

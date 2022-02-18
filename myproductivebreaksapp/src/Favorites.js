@@ -6,13 +6,13 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { AiOutlineStar } from "react-icons/ai";
 
-const Favorites = ({ favorite, handleRemoveFavorite }) => {
+const Favorites = ({ hidden, favorite, handleRemoveFavorite }) => {
   const showFavorites = favorite.map((object, index) => {
     return (
-    <div>
-      <Container fluid="sm" className={index}>
+    <div key={index}>
+      <Container fluid="sm" className={hidden}>
         <Card className="text-center">
-          <Card.Header as="h6" className="text-center">
+          <Card.Header className="text-center">
             Favorite <AiOutlineStar />
           </Card.Header>
           <Container>
@@ -22,7 +22,7 @@ const Favorites = ({ favorite, handleRemoveFavorite }) => {
             </Row>
             <Card.Body className="text-center">
               <Card.Text>
-                <Card.Text as="h6">{object.activity}</Card.Text>
+                <Card.Text>{object.activity}</Card.Text>
               </Card.Text>
               <Button
                 className="d-grid gap-2"
@@ -34,7 +34,7 @@ const Favorites = ({ favorite, handleRemoveFavorite }) => {
               </Button>{" "}
             </Card.Body>
           </Container>
-          <Card.Footer as="h6" className="text-center"></Card.Footer>
+          <Card.Footer className="text-center"></Card.Footer>
         </Card>
       </Container>
       </div>

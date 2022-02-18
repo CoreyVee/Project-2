@@ -20,7 +20,7 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   boredArray.push(bored);
   console.log(boredArray);
 
-  const url = `http://www.boredapi.com/api/activity/`;
+  const url = `http://www.boredapi.com/api/activity${type}`;
   const typeArr = [
     { type: "Random", link: "/" },
     { type: "Education", link: "?type=education" },
@@ -57,7 +57,7 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
     </Dropdown.Item>
   ));
   const getBored = () => {
-    const url = `http://www.boredapi.com/api/activity${type}`;
+    const url = `http://www.boredapi.com/api/activity/`;
 
     fetch(url)
       .then((response) => response.json())
@@ -75,9 +75,9 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   };
   const aCard = boredArray.map((activity, index) => {
     return (
-      <Container fluid="sm" id="activityCard" key={index}>
-        <Card className='1'>
-          <Card.Header as="h6" className="text-center">
+      <Container key={index} id="activityCard" >
+        <Card className={hidden}>
+          <Card.Header className="text-center">
             Favorite{" "}
             <AiOutlineStar
               onClick={() =>
@@ -90,27 +90,18 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
             />
           </Card.Header>
           <Container>
-            <Row className="justify-content-space-evenly">
-              <Col className="space-center">
-                Participants: {activity.participants}
-              </Col>
-              <Col className="space-center">Type: {activity.type}</Col>
-            </Row>
+              <Card.Title className='text-center'>{activity.activity}</Card.Title>
             <Card.Body className="text-center">
-              <Card.Text>
-                <Card.Text>{activity.activity}</Card.Text>
-              </Card.Text>
-              <Row>
-                <Col>
-                  <DropdownButton
+              <Card.Text> Type: {activity.type}</Card.Text>
+              <Card.Text> Participants: {activity.participants}</Card.Text>
+                  <Container className='justify-content-space-evenly'>
+                    <DropdownButton
                     as={ButtonGroup}
                     title="Set Activity by Type"
                     id="bg-vertical-dropdown-1"
                   >
                     {dropDownButton}
                   </DropdownButton>
-                </Col>
-                <Col>
                   {" "}
                   <Button
                     className="d-grid gap-2"
@@ -120,11 +111,10 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
                   >
                     Get another
                   </Button>{" "}
-                </Col>
-              </Row>
+                  </Container>
             </Card.Body>
           </Container>
-          <Card.Footer as="h6" className="text-center"></Card.Footer>
+          <Card.Footer className="text-center"></Card.Footer>
         </Card>
       </Container>
     );
@@ -155,7 +145,8 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       {aCard}
       <hr></hr>
       <Favorites favorite={favorite}
-      handleRemoveFavorite={handleRemoveFavorite} />
+      handleRemoveFavorite={handleRemoveFavorite}
+      hidden={hidden} />
     </div>
   );
 };
