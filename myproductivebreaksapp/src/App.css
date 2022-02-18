@@ -4,12 +4,24 @@ lightgreen : #e1dc6b;
 brown: #bb8918;
 purple: #523637;
 pink: #f2b9cc; */
+.App {
 
-.hidden {
-    display: none;
 }
-.favoriteHidden {
+Body {
+    background: #d9a7c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+{
+    margin-left: 5px;
+}
+.none {
     display: none;
+
+}
+.none {
+    display: none;
+
 }
 .block {
     display: block;
@@ -31,4 +43,27 @@ hr {
 }
 .activityCard {
     margin-bottom: 60px;
+}
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+  }
+  .aboutTitle{
+      padding: 20px;
+  }
+  .video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+.aboutParagraph {
+    margin-left: 15px;
+}
+.homeParagraph {
+    text-align: center;
+    margin-left: 15px;
 }

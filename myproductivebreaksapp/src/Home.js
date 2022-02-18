@@ -13,8 +13,8 @@ import { AiOutlineStar } from "react-icons/ai";
 const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   const [bored, setBored] = useState([]);
   const [type, setType] = useState("/");
-  const [hidden, setHidden] = useState("hidden");
-  const [favoriteHidden, setFavoriteHidden] = useState("hidden");
+  const [hidden, setHidden] = useState("none");
+  const [favoriteHidden, setFavoriteHidden] = useState("none");
 
   const boredArray = [];
   boredArray.push(bored);
@@ -77,8 +77,8 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   };
   const aCard = boredArray.map((activity, index) => {
     return (
-      <Container key={index} id="activityCard">
-        <Card className={hidden}>
+      <Container className={hidden} key={index} id="activityCard">
+        <Card >
           <Card.Header className="text-center">
             Add to List{" "}
             <AiOutlineStar
@@ -129,10 +129,11 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   });
   
   return (
-    <div>
+    <div className='homePage'>
+    <div className='homeParagraph'>
       <h1 className="title">Welcome to Bored App!</h1>
       <h4 className="subTitle">
-        Kick back, relax, and reset with a fun activity
+        Get a random activity
       </h4>
       <p>
         Not sure what to choose? No problem. Get a random activity by clicking
@@ -149,9 +150,8 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       >
         Get Random Activity
       </Button>
-      <hr></hr>
+      </div>
       {aCard}
-      <hr></hr>
       <Favorites
         favorite={favorite}
         handleRemoveFavorite={handleRemoveFavorite}
