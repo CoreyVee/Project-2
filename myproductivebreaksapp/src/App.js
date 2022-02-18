@@ -7,13 +7,12 @@ import Favorites from "./Favorites";
 import Tips from "./About";
 import "./App.css";
 
-function App() {
-  const [favorite, setFavorite] = useState([{}]);
+function App(bored) {
+  const [favorite, setFavorite] = useState([]);
 
-  const handleAddFavorite = (object, type, participants) => {
+  const handleAddFavorite = (activity, type, participants) => {
     const favorites = [...favorite];
-    favorites.push({ participants, type});
-    console.log(favorites)
+    favorites.push({activity,participants, type});
     setFavorite(favorites)
   };
 
@@ -31,7 +30,8 @@ function App() {
             path="/"
             element={<Home handleAddFavorite={handleAddFavorite}
             favorite={favorite}
-                handleRemoveFavorite={handleRemoveFavorite} />}
+                handleRemoveFavorite={handleRemoveFavorite}
+                bored={bored} />}
           />
           <Route
             path="/Favorites"

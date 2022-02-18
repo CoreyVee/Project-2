@@ -8,10 +8,13 @@ pink: #f2b9cc; */
 .hidden {
     display: none;
 }
+.favoriteHidden {
+    display: none;
+}
 .block {
     display: block;
 }
-.activityCard {
+#activityCard {
     margin-top: 25px;
 }
 hr {
@@ -21,5 +24,11 @@ hr {
     color: white;
 }
 #header{
-    padding: 25px;
+    margin-bottom: 25px;
+}
+#footer {
+    margin-top: 75px;
+}
+.activityCard {
+    margin-bottom: 60px;
 }

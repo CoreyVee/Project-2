@@ -6,15 +6,15 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { AiOutlineStar } from "react-icons/ai";
 
 const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   const [bored, setBored] = useState([]);
-  const [type, setType] = useState(null);
+  const [type, setType] = useState('/');
   const [hidden, setHidden] = useState("hidden");
+  const [favoriteHidden, setFavoriteHidden] = useState("hidden");
 
   const boredArray = [];
   boredArray.push(bored);
@@ -73,19 +73,19 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
   const toggleHidden = () => {
     setHidden("block");
   };
+  const toggleFavoriteHidden = () => {
+    setFavoriteHidden("block");
+  };
   const aCard = boredArray.map((activity, index) => {
     return (
       <Container key={index} id="activityCard" >
         <Card className={hidden}>
           <Card.Header className="text-center">
-            Favorite{" "}
+            Add to List{" "}
             <AiOutlineStar
               onClick={() =>
-                handleAddFavorite(
-                  boredArray.activity,
-                  boredArray.participants,
-                  boredArray.type
-                )
+                {handleAddFavorite(bored.activity, activity.type, activity.participants);
+                    toggleFavoriteHidden()}
               }
             />
           </Card.Header>
@@ -94,13 +94,14 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
             <Card.Body className="text-center">
               <Card.Text> Type: {activity.type}</Card.Text>
               <Card.Text> Participants: {activity.participants}</Card.Text>
-                  <Container className='justify-content-space-evenly'>
+              <ButtonGroup>
                     <DropdownButton
                     as={ButtonGroup}
-                    title="Set Activity by Type"
-                    id="bg-vertical-dropdown-1"
+                    title="Set Activity Type"
+                    id="md-vertical-dropdown-1"
                   >
                     {dropDownButton}
+                  <Dropdown.Item href="https://www.youtube.com/watch?v=08i9kvCJvJ0" target="_blank">Build API App</Dropdown.Item>
                   </DropdownButton>
                   {" "}
                   <Button
@@ -111,7 +112,7 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
                   >
                     Get another
                   </Button>{" "}
-                  </Container>
+                  </ButtonGroup>
             </Card.Body>
           </Container>
           <Card.Footer className="text-center"></Card.Footer>
@@ -129,8 +130,8 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       <p>
         Not sure what to choose? No problem. Get a random activity by clicking
         on the button below. If you want to get a little more specific, try
-        selecting activities by type. You can get more activities back of the
-        same type the Get another button.
+        selecting activities by type. You can search more activities of the
+        same type with the Get another button.
       </p>
       <Button
         onClick={() => {
@@ -146,7 +147,8 @@ const Home = ({ favorite, handleAddFavorite, handleRemoveFavorite }) => {
       <hr></hr>
       <Favorites favorite={favorite}
       handleRemoveFavorite={handleRemoveFavorite}
-      hidden={hidden} />
+      favoriteHidden={favoriteHidden}
+       />
     </div>
   );
 };
