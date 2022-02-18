@@ -40,7 +40,6 @@ const Favorites = ({ favoriteHidden, favorite, handleRemoveFavorite }) => {
   return (
     <div className={favoriteHidden}>
       <h2 className="text-center">Your List</h2>
-      <hr></hr>
       {showFavorites}
     </div>
   );
